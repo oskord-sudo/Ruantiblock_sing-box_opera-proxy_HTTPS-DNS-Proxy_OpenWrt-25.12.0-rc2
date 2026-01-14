@@ -21,7 +21,8 @@ destination_file="/tmp/opera-proxy.apk"
 echo "Downlading opera-proxy..."
 wget "$url" -O "$destination_file" || { echo "Failed to download the file"; exit 1; }
 echo "Installing opera-proxy..."
-apk add $destination_file
+# ИЗМЕНЕНО: добавлен --allow-untrusted для локального .apk файла
+apk add --allow-untrusted $destination_file
 
 cat <<EOF > /etc/sing-box/config.json
   {
